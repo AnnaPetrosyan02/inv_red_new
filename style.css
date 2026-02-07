@@ -1,0 +1,294 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body{
+    width: 100%;
+    max-width: 1200px;
+    background-color: #3c060f;
+    margin: 70px auto;
+    padding: 10px;
+}
+
+.card-inner{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+} */
+
+/* .wax_seal {
+    width: 150px;
+    position: absolute;
+    z-index: 2;
+    left: 23.5%;
+    top:2%;
+} */
+/* 
+.card .couple{
+    width:600px;
+}
+
+.card .lettre{
+    width:550px;
+    background-color: #D8D1C2;
+} */
+
+body{
+    width: 100%;
+    max-width: 1200px;
+    background-color: #3c060f;
+    margin: 100px auto;
+    padding: 10px;
+}
+
+.card-inner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+
+.wax_seal{
+    width: 150px;
+    position: absolute;
+    z-index: 2;
+    right: 16.5%;
+    top: -7%;
+}
+
+.card-front .couple{
+    width: 600px;
+}
+
+.card-back .lettre{
+    width: 550px;
+    height: 900px;
+    background-color: #D8D1C2;
+    opacity: 94%;
+    position: relative;
+}
+
+/* 
+.card {
+    max-width: 360px;
+    height: 640px;
+    margin: 40px auto;
+    perspective: 1200px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1.6s cubic-bezier(.4,0,.2,1);
+}
+
+.card.open .card-inner {
+    transform: rotateY(180deg);
+}
+
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-back {
+    background-color: #D8D1C2;
+    transform: rotateY(180deg);
+    overflow-y: auto;
+    position: relative;
+}
+
+.wax_seal {
+    position: absolute;
+    width: 120px;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+ */
+
+.heros{
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+
+.names{
+    padding-top: 35px;
+    font-family: "Mrs Saint Delafield", cursive;
+    font-size: 95px;
+    line-height: 0.7;
+}
+
+.names .m_name{
+    margin-right: 37%;
+}
+
+.names .and{
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 55px;
+}
+
+.names .w_name{
+    margin-left: 40%;
+}
+
+.heros .date{
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.heros .date .day{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.heros .date .day .day-number{
+    margin-top: 14px;
+    /* height: 30px; */
+    font-family: "Mrs Saint Delafield", cursive;
+    font-size: 45px;
+    font-weight: normal;
+}
+
+.heros .date .week_day, .heros .date .time{
+    margin-top: 43px;
+    width: 60px;    
+    height: 30px;
+    padding-top: 7px;
+    border-top: solid 1.5px;
+    border-bottom: solid 1.5px;
+}
+
+
+.lettre .information{
+    text-align: right;
+    padding: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.lettre .information p {
+    letter-spacing: 0.05em;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+    /* .invitation {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .invitation .lettre,
+    .invitation .couple {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .wax_seal {
+        left: 50%;
+        transform: translateX(-50%);
+        top: -30px;
+    } */
+
+/* .invitation .lettre, img {
+    border-radius: 6px;
+} */
+
+.invitation .lettre, .couple {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+/* HIDE REVEAL BEFORE OPEN */
+.card:not(.open) .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+@media (max-width: 900px) {
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card {
+    max-width: 420px;
+    height: 640px;
+    margin: 40px auto;
+    perspective: 1200px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1.6s cubic-bezier(.4,0,.2,1);
+}
+
+.card.open .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* SIDES */
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+/* FRONT */
+.card-front img {
+    max-width: 420px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BACK */
+.card-back {
+    background-color: #D8D1C2;
+    transform: rotateY(180deg);
+    overflow-y: auto;
+    position: relative;
+}
+
+.lettre{
+    max-width: 420px;
+    width: 100%;
+}
+
+}
