@@ -1,21 +1,16 @@
-const items = document.querySelectorAll('.reveal');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('active');
-    }
-  });
-}, { threshold: 0.3 });
-
-items.forEach(i => observer.observe(i));
-
 const card = document.querySelector('.card');
 let opened = false;
 
 card.addEventListener('click', () => {
-  if(!opened){
-    card.classList.add('open');
-    opened = true;
-  }
-}) 
+    if (!opened) {
+        card.classList.add('open');
+        opened = true;
+
+        // Триггерим reveal через задержку (после анимации flip)
+        setTimeout(() => {
+            document.querySelectorAll('.reveal').forEach((el, i) => {
+                setTimeout(() => el.classList.add('active'), i * 200);
+            });
+        }, 900);
+    }
+});

@@ -1,83 +1,29 @@
 *,
 *::before,
-*::after{
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* body{
-    width: 100%;
-    max-width: 1200px;
-    background-color: #3c060f;
-    margin: 70px auto;
-    padding: 10px;
-}
-
-.card-inner{
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-} */
-
-/* .wax_seal {
-    width: 150px;
-    position: absolute;
-    z-index: 2;
-    left: 23.5%;
-    top:2%;
-} */
-/* 
-.card .couple{
-    width:600px;
-}
-
-.card .lettre{
-    width:550px;
-    background-color: #D8D1C2;
-} */
-
-body{
+body {
     width: 100%;
     max-width: 1200px;
     background-color: #3c060f;
     margin: 100px auto;
     padding: 10px;
-}
-
-.card-inner{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: relative;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.wax_seal{
-    width: 150px;
-    position: absolute;
-    z-index: 2;
-    right: 16.5%;
-    top: -7%;
-}
-
-.card-front .couple{
-    width: 600px;
-}
-
-.card-back .lettre{
-    width: 550px;
-    height: 900px;
-    background-color: #D8D1C2;
-    opacity: 94%;
-    position: relative;
-}
-
-/* 
+/* ── CARD WRAPPER ── */
 .card {
-    max-width: 360px;
-    height: 640px;
-    margin: 40px auto;
+    width: 600px;
+    height: 900px;
     perspective: 1200px;
+    cursor: pointer;
 }
 
 .card-inner {
@@ -85,99 +31,125 @@ body{
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 1.6s cubic-bezier(.4,0,.2,1);
+    transition: transform 1.6s cubic-bezier(.4, 0, .2, 1);
 }
 
 .card.open .card-inner {
     transform: rotateY(180deg);
 }
 
+/* ── SHARED FACE STYLES ── */
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
 
-.card-front img {
+/* ── FRONT ── */
+.card-front img.couple {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
+/* ── BACK ── */
 .card-back {
     background-color: #D8D1C2;
     transform: rotateY(180deg);
     overflow-y: auto;
+}
+
+.card-back .lettre {
+    width: 100%;
+    min-height: 100%;
     position: relative;
+    padding-bottom: 40px;
 }
 
+/* ── WAX SEAL ── */
 .wax_seal {
+    width: 130px;
     position: absolute;
-    width: 120px;
-    top: -20px;
+    z-index: 10;
     left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
+    transform: translateX(-50%) rotateY(180deg);
+    top: -55px;
+    backface-visibility: visible;
+    pointer-events: none;
 }
- */
 
-.heros{
-    padding: 50px;
+/* ── HERO SECTION ── */
+.heros {
+    padding: 80px 50px 50px;
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: 45px;
 }
 
-.names{
+.names {
     padding-top: 35px;
     font-family: "Mrs Saint Delafield", cursive;
     font-size: 95px;
     line-height: 0.7;
 }
 
-.names .m_name{
+.names .m_name {
     margin-right: 37%;
 }
 
-.names .and{
+.names .and {
     color: rgba(0, 0, 0, 0.85);
     font-size: 55px;
 }
 
-.names .w_name{
+.names .w_name {
     margin-left: 40%;
 }
 
-.heros .date{
+/* ── DATE ROW ── */
+.heros .date {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     font-weight: bold;
     font-size: 20px;
 }
 
-.heros .date .day{
+.heros .date .day {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-.heros .date .day .day-number{
+.heros .date .day .day-number {
     margin-top: 14px;
-    /* height: 30px; */
     font-family: "Mrs Saint Delafield", cursive;
     font-size: 45px;
     font-weight: normal;
 }
 
-.heros .date .week_day, .heros .date .time{
-    margin-top: 43px;
-    width: 60px;    
+.heros .date .week_day,
+.heros .date .time {
+    /* margin-top: 43px; */
+    width: 60px;
     height: 30px;
-    padding-top: 7px;
+    padding-top: 2px;
     border-top: solid 1.5px;
     border-bottom: solid 1.5px;
 }
 
-
-.lettre .information{
+/* ── INFO SECTION ── */
+.lettre .information {
     text-align: right;
-    padding: 30px;
+    padding: 30px 40px;
     font-size: 20px;
     font-weight: bold;
     line-height: 1.5;
@@ -187,10 +159,11 @@ body{
     letter-spacing: 0.05em;
 }
 
+/* ── REVEAL ANIMATION ── */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .reveal.active {
@@ -198,97 +171,60 @@ body{
     transform: translateY(0);
 }
 
-    /* .invitation {
-        flex-direction: column;
-        align-items: center;
+/* ── SHADOWS ── */
+.card-front img.couple,
+.card-back .lettre {
+    box-shadow: none;
+}
+
+/* ══════════════════════════════
+   MOBILE  (≤ 900px)
+══════════════════════════════ */
+@media (max-width: 900px) {
+
+    body {
+        margin: 40px auto;
+        min-height: unset;
     }
 
-    .invitation .lettre,
-    .invitation .couple {
+    .card {
         width: 100%;
-        max-width: 500px;
+        max-width: 420px;
+        height: 680px;
+        margin: 0 auto;
+    }
+
+    .card-front,
+    .card-back {
+        border-radius: 8px;
+    }
+
+    .card-front img.couple {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .lettre {
+        width: 100%;
     }
 
     .wax_seal {
-        left: 50%;
-        transform: translateX(-50%);
-        top: -30px;
-    } */
+        width: 110px;
+        top: -45px;
+    }
 
-/* .invitation .lettre, img {
-    border-radius: 6px;
-} */
+    .names {
+        font-size: 70px;
+    }
 
-.invitation .lettre, .couple {
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-}
+    .heros {
+        padding: 70px 30px 30px;
+        gap: 30px;
+    }
 
-/* HIDE REVEAL BEFORE OPEN */
-.card:not(.open) .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-@media (max-width: 900px) {
-
-*,
-*::before,
-*::after{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.card {
-    max-width: 420px;
-    height: 640px;
-    margin: 40px auto;
-    perspective: 1200px;
-}
-
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 1.6s cubic-bezier(.4,0,.2,1);
-}
-
-.card.open .card-inner {
-    transform: rotateY(180deg);
-}
-
-/* SIDES */
-.card-front,
-.card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-}
-
-/* FRONT */
-.card-front img {
-    max-width: 420px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* BACK */
-.card-back {
-    background-color: #D8D1C2;
-    transform: rotateY(180deg);
-    overflow-y: auto;
-    position: relative;
-}
-
-.lettre{
-    max-width: 420px;
-    width: 100%;
-}
-
+    .lettre .information {
+        font-size: 17px;
+        padding: 20px 25px;
+    }
 }
